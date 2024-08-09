@@ -1,0 +1,71 @@
+---
+title: "EDS212 Day5a"
+author: "Rachel Swick"
+format: html
+execute: 
+  warning: false
+---
+
+```{r}
+#| message: false
+# load libraries ----
+library(tidyverse)
+```
+
+Try using `head()`, `tail()`, and `dim()` on the `dplyr::starwars` data frame:
+
+```{r}
+#| include: false
+# do some data exploration on the starwars df ----
+head(starwars, n = 5)
+tail(starwars, n = 10)
+dim(starwars)
+```
+
+- Create a ggplot (scatterplot) of character `mass` (y-axis) and `height` (x-axis)
+- update the color of the points so that color changes based on the value of `mass`
+
+```{r}
+#| echo: false
+ggplot(data = starwars, aes(x = height, y = mass, color = mass)) +
+  geom_point() +
+  labs(title = "Starwars Character Height and Weights") +
+  labs(x = "Height (cm)", 
+       y = "Mass (kg)")
+```
+
+- Create a histogram of character heights
+- Update the fill color (`fill`) to purple and the outside border line (`color`) of each histogram bin to orange
+- Update your code chunk options so that only your code and output graph appear in the rendered doc (no warnings or messages)
+- Update the axis labels
+
+```{r}
+#| fig-cap: "Figure 1. This is my figure caption"
+#| fig-alt: "This is some alt text"
+ggplot(data = starwars, aes(x = height))+
+  geom_histogram(color = 'orange', fill = 'purple')+
+  labs(x = "Height (cm)",
+       y = "Number of Characters")+
+  labs(title = "Figure 1. Histogram of Starwars Character Heights")
+```
+
+`df$col_name` - this is the command to call a particular column from a df
+
+```{r}
+sw_height_mean <- round(mean(starwars$height, na.rm = TRUE), 3)
+sw_height_mean
+```
+
+The mean height of all starwars characters is `r sw_height_mean`
+
+
+
+
+
+
+
+
+
+
+
+
