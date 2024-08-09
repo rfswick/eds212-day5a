@@ -6,6 +6,8 @@ execute:
   warning: false
 ---
 
+##Hi its Amanda :)
+
 ```{r}
 #| message: false
 # load libraries ----
